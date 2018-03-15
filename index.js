@@ -730,7 +730,7 @@ const parseNextBlock = async () => {
       await sdb_states.updateOne({}, { blockNumber: blockNum, timestamp: blockTime }, { "multi" : false, "upsert" : true });
       console.log('Block Parsed', blockNum);
     } catch (err) {
-      console.log('Error Save Redis', blockNum, err);
+      console.log('Error Saving', blockNum, err);
     }
 
     delete awaitingBlocks[0];
