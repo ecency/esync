@@ -30,12 +30,12 @@ if (process.env.STEEMJS_URL) {
 
 //setInterval(clearGC, 6000000); //10 hr
 
-//var schedule = require('node-schedule');
+var schedule = require('node-schedule');
 
-//var jj = schedule.scheduleJob('0 0 */8 * *', function(){
-//  console.log('Restarting script');
-//  process.exit();
-//});
+var jj = schedule.scheduleJob('0 0 */8 * *', function(){
+  console.log('Restarting script');
+  process.exit();
+});
 
 mongoose.connect(options.db_url);
 
