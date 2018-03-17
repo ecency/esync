@@ -576,147 +576,147 @@ const parseNextBlock = async () => {
         }//for
 
         if (votes.length>0) {
-          sdb_votes.collection.insert(votes, function(err,res){
-            if (err){
-              console.log('votes',err);
-            }
-          });
+            sdb_votes.collection.insertMany(votes, {ordered: false}, function(err,res){
+              if (err){
+                console.log('votes',err);
+              }
+            });
         }
         if (transfers.length>0) {
-          sdb_transfers.collection.insert(transfers, function(err,res){
+          sdb_transfers.collection.insertMany(transfers, {ordered: false}, function(err,res){
             if (err){
               console.log('transfers',err);
             }
           });
         }
         if (follows.length>0) {
-          sdb_follows.collection.insert(follows, function(err,res){
+          sdb_follows.collection.insertMany(follows, {ordered: false}, function(err,res){
             if (err){
               console.log('follows',err);
             }
           });
         }
         if (reblogs.length>0) {
-          sdb_reblogs.collection.insert(reblogs, function(err,res){
+          sdb_reblogs.collection.insertMany(reblogs, {ordered: false}, function(err,res){
             if (err){
               console.log('reblogs',err);
             }
           });
         }
         if (mentions.length>0) {
-          sdb_mentions.collection.insert(mentions, function(err,res){
+          sdb_mentions.collection.insertMany(mentions, {ordered: false}, function(err,res){
             if (err){
               console.log('mentions',err);
             }
           });
         }
         if (comments.length>0) {
-          sdb_comments.collection.insert(comments, function(err,res){
+          sdb_comments.collection.insertMany(comments, {ordered: false}, function(err,res){
             if (err){
               console.log('comments',err);
             }
           });
         }
         if (comment_options.length>0) {
-          sdb_comment_options.collection.insert(comment_options, function(err,res){
+          sdb_comment_options.collection.insertMany(comment_options, {ordered: false}, function(err,res){
             if (err){
               console.log('comment_options',err);
             }
           });
         }
         if (rewards.length>0) {
-          sdb_claim_reward_balances.collection.insert(rewards, function(err,res){
+          sdb_claim_reward_balances.collection.insertMany(rewards, {ordered: false}, function(err,res){
             if (err){
               console.log('rewards',err);
             }
           });
         }
         if (account_updates.length>0) {
-          sdb_account_updates.collection.insert(account_updates, function(err,res){
+          sdb_account_updates.collection.insertMany(account_updates, {ordered: false}, function(err,res){
             if (err){
               console.log('account_updates',err);
             }
           });
         }
         if (producer_rewards.length>0) {
-          sdb_producer_rewards.collection.insert(producer_rewards, function(err,res){
+          sdb_producer_rewards.collection.insertMany(producer_rewards, {ordered: false}, function(err,res){
             if (err){
               console.log('producer_rewards',err);
             }
           });
         }
         if (curation_rewards.length>0) {
-          sdb_curation_rewards.collection.insert(curation_rewards, function(err,res){
+          sdb_curation_rewards.collection.insertMany(curation_rewards, {ordered: false}, function(err,res){
             if (err){
               console.log('curation_rewards',err);
             }
           });
         }
         if (author_rewards.length>0) {
-          sdb_author_rewards.collection.insert(author_rewards, function(err,res){
+          sdb_author_rewards.collection.insertMany(author_rewards, {ordered: false}, function(err,res){
             if (err){
               console.log('author_rewards',err);
             }
           });
         }
         if (delegate_vesting_shares.length>0) {
-          sdb_delegate_vesting_shares.collection.insert(delegate_vesting_shares, function(err,res){
+          sdb_delegate_vesting_shares.collection.insertMany(delegate_vesting_shares, {ordered: false}, function(err,res){
             if (err){
               console.log('delegate_vesting_shares',err);
             }
           });
         }
         if (comment_benefactor_rewards.length>0) {
-          sdb_comment_benefactor_rewards.collection.insert(comment_benefactor_rewards, function(err,res){
+          sdb_comment_benefactor_rewards.collection.insertMany(comment_benefactor_rewards, {ordered: false}, function(err,res){
             if (err){
               console.log('comment_benefactor_rewards',err);
             }
           });
         }
         if (transfer_to_vestings.length>0) {
-          sdb_transfer_to_vestings.collection.insert(transfer_to_vestings, function(err,res){
+          sdb_transfer_to_vestings.collection.insertMany(transfer_to_vestings, {ordered: false}, function(err,res){
             if (err){
               console.log('transfer_to_vestings',err);
             }
           });
         }
         if (fill_orders.length>0) {
-          sdb_fill_orders.collection.insert(fill_orders, function(err,res){
+          sdb_fill_orders.collection.insertMany(fill_orders, {ordered: false}, function(err,res){
             if (err){
               console.log('fill_orders',err);
             }
           });
         }
         if (return_vesting_delegations.length>0) {
-          sdb_return_vesting_delegations.collection.insert(return_vesting_delegations, function(err,res){
+          sdb_return_vesting_delegations.collection.insertMany(return_vesting_delegations, {ordered: false}, function(err,res){
             if (err){
               console.log('return_vesting_delegations',err);
             }
           });
         }
         if (withdraw_vestings.length>0) {
-          sdb_withdraw_vestings.collection.insert(withdraw_vestings, function(err,res){
+          sdb_withdraw_vestings.collection.insertMany(withdraw_vestings, {ordered: false}, function(err,res){
             if (err){
               console.log('withdraw_vestings',err);
             }
           });
         }
         if (limit_order_creates.length>0) {
-          sdb_limit_order_creates.collection.insert(limit_order_creates, function(err,res){
+          sdb_limit_order_creates.collection.insertMany(limit_order_creates, {ordered: false}, function(err,res){
             if (err){
               console.log('limit_order_creates',err);
             }
           });
         }
         if (fill_vesting_withdraws.length>0) {
-          sdb_fill_vesting_withdraws.collection.insert(fill_vesting_withdraws, function(err,res){
+          sdb_fill_vesting_withdraws.collection.insertMany(fill_vesting_withdraws, {ordered: false}, function(err,res){
             if (err){
               console.log('fill_vesting_withdraws',err);
             }
           });
         }
         if (account_witness_votes.length>0) {
-          sdb_account_witness_votes.collection.insert(account_witness_votes, function(err,res){
+          sdb_account_witness_votes.collection.insertMany(account_witness_votes, {ordered: false}, function(err,res){
             if (err){
               console.log('account_witness_votes',err);
             }
