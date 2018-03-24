@@ -10,32 +10,14 @@ const config = require('./config.js');
 let {options} = config;
 
 
-http.globalAgent.maxSockets = 100;
-https.globalAgent.maxSockets = 100;
+http.globalAgent.maxSockets = Infinity;
+https.globalAgent.maxSockets = Infinity;
 
 if (process.env.STEEMJS_URL) {
   steem.api.setOptions({ url: process.env.STEEMJS_URL });
 } else {
   steem.api.setOptions({ url: options.url });
 }
-
-
-//function clearGC() {
-//  try {
-//    global.gc();
-//  } catch (e) {
-//    console.log("You must run program with 'node --expose-gc index.js' or 'npm start'");
-//  }
-//}
-
-//setInterval(clearGC, 6000000); //10 hr
-
-var schedule = require('node-schedule');
-
-var jj = schedule.scheduleJob('0 0 */8 * *', function(){
-  console.log('Restarting script');
-  process.exit();
-});
 
 mongoose.connect(options.db_url);
 
@@ -213,6 +195,13 @@ let sdb_fill_vesting_withdraws = mongoose.model('sdb_fill_vesting_withdraws', {
 let sdb_states = mongoose.model('sdb_states', {
     _id: String,
     blockNumber: String,
+    timestamp: Date
+});
+
+let sdb_notify = mongoose.model('sdb_notify', {
+    _id: String,
+    username: String,
+    
     timestamp: Date
 });
 
