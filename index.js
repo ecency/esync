@@ -136,6 +136,7 @@ let sdb_comment_benefactor_rewards = mongoose.model('sdb_comment_benefactor_rewa
     author: String,
     permlink: String,
     reward: String,
+    vest: Number,
     timestamp: { type: Date, expires: '90d'},
   });
 let sdb_transfer_to_vestings = mongoose.model('sdb_transfer_to_vestings', {
@@ -490,6 +491,7 @@ const parseNextBlock = async () => {
               author: oop.author,
               permlink: oop.permlink,
               reward: oop.reward,
+              vest: parseFloat(oop.reward),
               timestamp: oop.timestamp
             });
           }
