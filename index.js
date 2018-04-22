@@ -1,4 +1,4 @@
-const steem = require('steem');
+gconst steem = require('steem');
 const _ = require('lodash');
 const http = require('http');
 const https = require('https');
@@ -337,7 +337,7 @@ const parseNextBlock = async () => {
               json = safelyParseJSON(oop.json);
               
               if (json && json[0]==='follow') {
-                if (json[1].what.length>0) {
+                if (json[1].what && json[1].what.length>0) {
                   json[1].blog = true;
                 } else {
                   json[1].blog = false;
