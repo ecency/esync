@@ -1,4 +1,4 @@
-gconst steem = require('steem');
+const steem = require('steem');
 const _ = require('lodash');
 const http = require('http');
 const https = require('https');
