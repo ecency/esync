@@ -198,11 +198,25 @@ let sdb_states = mongoose.model('sdb_states', {
     blockNumber: String,
     timestamp: Date
 });
-
+let sdb_escrow_transfers = mongoose.model('sdb_escrow_transfers', {
+    _id: String,
+    from: String,
+    to: String,
+    sbd_amount: String,
+    steem_amount: String,
+    escrow_id: Number,
+    agent: String,
+    fee: String,
+    json_meta: String,
+    ratification_deadline: Date,
+    escrow_expiration: Date,
+    timestamp: Date
+});
 let sdb_notify = mongoose.model('sdb_notify', {
     _id: String,
     username: String,
-    
+    type: String,
+    data: {},
     timestamp: Date
 });
 
@@ -292,7 +306,7 @@ const parseNextBlock = async () => {
           comments=[],comment_options=[],account_updates=[],producer_rewards=[],
           curation_rewards=[],author_rewards=[],delegate_vesting_shares=[],comment_benefactor_rewards=[],
           transfer_to_vestings=[],fill_orders=[],return_vesting_delegations=[],withdraw_vestings=[],
-          limit_order_creates=[],fill_vesting_withdraws=[],account_witness_votes=[];
+          limit_order_creates=[],fill_vesting_withdraws=[],account_witness_votes=[],escrow_transfers=[];
 
       if (numDaysBetween(new Date(), new Date(block[0].timestamp))<90) {
 
@@ -564,6 +578,22 @@ const parseNextBlock = async () => {
               timestamp: oop.timestamp
             });
           }
+          if (op[0]==='escrow_transfer') {
+            escrow_transfers.push({
+              _id: oop.indx,
+              from: oop.from,
+              to:  oop.to,
+              sbd_amount: oop.sbd_amount,
+              steem_amount: oop.steem_amount,
+              escrow_id: oop.escrow_id,
+              agent: oop.agent,
+              fee: oop.fee,
+              json_meta: oop.json_meta,
+              ratification_deadline: oop.ratification_deadline,
+              escrow_expiration: oop.escrow_expiration,
+              timestamp: oop.timestamp
+            });
+          }
         }//for
 
         if (votes.length>0) {
@@ -710,6 +740,13 @@ const parseNextBlock = async () => {
           sdb_account_witness_votes.collection.insertMany(account_witness_votes, {ordered: false}, function(err,res){
             if (err){
               console.log('account_witness_votes',err);
+            }
+          });
+        }
+        if (escrow_transfers.length>0) {
+          sdb_escrow_transfers.collection.insertMany(escrow_transfers, {ordered: false}, function(err,res){
+            if (err){
+              console.log('escrow_transfers',err);
             }
           });
         }
